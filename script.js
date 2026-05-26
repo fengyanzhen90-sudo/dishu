@@ -97,8 +97,8 @@ function finishGame() {
   window.clearInterval(countdownTimer);
   clearHoles();
   startBtn.disabled = false;
-  startBtn.textContent = "再玩一次";
-  messageEl.textContent = `游戏结束，最终得分 ${score}`;
+  startBtn.textContent = "再敲一局";
+  messageEl.textContent = `收工啦，小锤得分 ${score}`;
 }
 
 function startGame() {
@@ -109,9 +109,9 @@ function startGame() {
   isPlaying = true;
   setText();
   clearHoles();
-  messageEl.textContent = `${level.label}模式开始`;
+  messageEl.textContent = `${level.label}模式开始，盯住小脑袋`;
   startBtn.disabled = true;
-  startBtn.textContent = "游戏中";
+  startBtn.textContent = "敲敲中";
 
   window.clearInterval(spawnTimer);
   window.clearInterval(countdownTimer);
@@ -137,8 +137,8 @@ function resetGame() {
   clearHoles();
   setText();
   startBtn.disabled = false;
-  startBtn.textContent = "开始游戏";
-  messageEl.textContent = "选择难度后点击开始";
+  startBtn.textContent = "开始敲敲";
+  messageEl.textContent = "选个难度，准备敲敲啦";
 }
 
 function hitHole(event) {
@@ -149,7 +149,7 @@ function hitHole(event) {
   if (!kind) {
     combo = 0;
     score = Math.max(0, score - 1);
-    messageEl.textContent = "敲空啦";
+    messageEl.textContent = "哎呀，敲空啦";
     setText();
     return;
   }
@@ -168,7 +168,7 @@ function hitHole(event) {
     const base = kind === "bonus" ? 5 : 2;
     const comboBonus = Math.min(8, Math.floor(combo / 3));
     score += base + comboBonus;
-    messageEl.textContent = kind === "bonus" ? "金色地鼠，加分" : "命中";
+    messageEl.textContent = kind === "bonus" ? "金色小地鼠，加好多分" : "敲中啦";
   }
 
   setText();
